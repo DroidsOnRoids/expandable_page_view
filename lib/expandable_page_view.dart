@@ -77,7 +77,7 @@ class ExpandablePageView extends StatefulWidget {
 class _ExpandablePageViewState extends State<ExpandablePageView> {
   late PageController _pageController;
   late List<double> _heights;
-  int _currentPage = 0;
+  late int _currentPage;
   int _previousPage = 0;
   bool _shouldDisposePageController = false;
   bool _firstPageLoaded = false;
@@ -93,6 +93,7 @@ class _ExpandablePageViewState extends State<ExpandablePageView> {
     super.initState();
     _heights = _prepareHeights();
     _pageController = widget.controller ?? PageController();
+    _currentPage = _pageController.initialPage;
     _pageController.addListener(_updatePage);
     _shouldDisposePageController = widget.controller == null;
   }
