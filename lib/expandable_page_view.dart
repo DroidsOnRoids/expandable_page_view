@@ -82,9 +82,21 @@ class _ExpandablePageViewState extends State<ExpandablePageView> {
   bool _shouldDisposePageController = false;
   bool _firstPageLoaded = false;
 
-  double get _currentHeight => _heights.contains(_currentPage) ? _heights[_currentPage] : _heights.first;
+  double get _currentHeight {
+    try {
+      return _heights[_currentPage];
+    } catch (_) {
+      return _heights.first;
+    }
+  }
 
-  double get _previousHeight => _heights.contains(_previousPage) ? _heights[_previousPage] : _heights.first;
+  double get _previousHeight {
+    try {
+      return _heights[_previousPage];
+    } catch (_) {
+      return _heights.first;
+    }
+  }
 
   bool get isBuilder => widget.itemBuilder != null;
 
