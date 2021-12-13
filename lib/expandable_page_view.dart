@@ -83,17 +83,17 @@ class _ExpandablePageViewState extends State<ExpandablePageView> {
   bool _firstPageLoaded = false;
 
   double get _currentHeight {
-    try {
+    if (_currentPage > 0 && _currentPage <= _heights.length) {
       return _heights[_currentPage];
-    } catch (_) {
+    } else {
       return _heights.first;
     }
   }
 
   double get _previousHeight {
-    try {
+    if (_previousPage > 0 && _previousPage <= _heights.length) {
       return _heights[_previousPage];
-    } catch (_) {
+    } else {
       return _heights.first;
     }
   }
